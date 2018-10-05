@@ -11,17 +11,16 @@ import android.widget.TextView;
 
 import com.example.devtrainee.albumapplicationmvvm.pojo.People;
 
-import java.util.Collections;
 import java.util.List;
 
 public class CustomPeopleAdapter extends RecyclerView.Adapter<CustomPeopleAdapter.ItemPeopleViewHolder> {
-
 
     public List<People> peopleList;
     Context context;
 
     public CustomPeopleAdapter(List<People> peopleList, Context context) {
-        this.peopleList = Collections.EMPTY_LIST;
+        this.peopleList = peopleList;
+        this.context=context;
     }
 
 
@@ -55,9 +54,6 @@ public class CustomPeopleAdapter extends RecyclerView.Adapter<CustomPeopleAdapte
             tvEmailPeople=itemView.findViewById(R.id.tv_number_person);
             tvNumberPeople=itemView.findViewById(R.id.tv_email_person);
         }
-
-
-
     }
 
 }

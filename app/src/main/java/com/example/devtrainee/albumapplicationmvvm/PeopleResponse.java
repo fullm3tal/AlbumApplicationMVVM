@@ -1,6 +1,7 @@
 package com.example.devtrainee.albumapplicationmvvm;
 
 import com.example.devtrainee.albumapplicationmvvm.pojo.People;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ public class PeopleResponse {
 
     public Status status;
 
-    public List<People> peopleList;
+    @SerializedName("results") public List<People> peopleList;
 
     public Throwable error;
 
