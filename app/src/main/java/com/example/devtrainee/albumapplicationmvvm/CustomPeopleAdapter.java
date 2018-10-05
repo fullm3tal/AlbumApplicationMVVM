@@ -58,8 +58,6 @@ public class CustomPeopleAdapter extends RecyclerView.Adapter<CustomPeopleAdapte
             tvEmailPeople = itemView.findViewById(R.id.tv_number_person);
             tvNumberPeople = itemView.findViewById(R.id.tv_email_person);
         }
-
-
     }
 
 }

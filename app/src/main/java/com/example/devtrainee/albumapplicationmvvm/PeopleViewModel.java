@@ -1,11 +1,11 @@
 package com.example.devtrainee.albumapplicationmvvm;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
@@ -14,7 +14,9 @@ public class PeopleViewModel extends ViewModel {
 
     MutableLiveData<ResPeople> responseLiveData;
 
-    public LiveData<ResPeople> getPeopleList() {
+    CompositeDisposable compositeDisposable = new CompositeDisposable();
+
+    public MutableLiveData<ResPeople> getPeopleList() {
         if (responseLiveData == null) {
             responseLiveData = new MutableLiveData<>();
         }
@@ -34,7 +36,7 @@ public class PeopleViewModel extends ViewModel {
                 .subscribe(new Observer<PeopleResponse>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        compositeDisposable.add(d);
                     }
 
                     @Override

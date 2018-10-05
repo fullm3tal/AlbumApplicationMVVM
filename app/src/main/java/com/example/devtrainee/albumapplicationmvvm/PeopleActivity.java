@@ -1,8 +1,6 @@
 package com.example.devtrainee.albumapplicationmvvm;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -14,10 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.example.devtrainee.albumapplicationmvvm.pojo.People;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
