@@ -38,6 +38,7 @@ public class PeopleActivity extends AppCompatActivity {
     FloatingActionButton floatingActionButton;
 
     PeopleViewModel model;
+
     RecyclerView recyclerView;
 
     @Override
@@ -47,15 +48,15 @@ public class PeopleActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        model = ViewModelProviders.of(this, new PeopleViewModelFactory()).get(PeopleViewModel.class);
+        model = ViewModelProviders.of(this).get(PeopleViewModel.class);
         recyclerView = findViewById(R.id.rv_people);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        model.getPeopleList().observe(this, new Observer<PeopleResponse>() {
+        model.getPeopleList().observe(this, new Observer<ResPeople>() {
             @Override
-            public void onChanged(@Nullable PeopleResponse peopleResponse) {
-                if (peopleResponse != null) {
-                    processChange(peopleResponse);
+            public void onChanged(@Nullable ResPeople resPeople) {
+                if (resPeople != null) {
+                    processChange(resPeople);
                 }
             }
         });
@@ -69,16 +70,16 @@ public class PeopleActivity extends AppCompatActivity {
 
     }
 
-    private void processChange(PeopleResponse peopleResponse) {
-        switch (peopleResponse.status) {
+    private void processChange(ResPeople resPeople) {
+        switch (resPeople.status) {
             case LOADING:
                 showLoading();
                 break;
             case SUCCESS:
-                showPeopleList(peopleResponse.peopleList);
+                showPeopleList(resPeople.peopleList);
                 break;
             case FAILURE:
-                showErrorMessage(peopleResponse.error);
+                showErrorMessage(resPeople.error);
                 break;
         }
     }

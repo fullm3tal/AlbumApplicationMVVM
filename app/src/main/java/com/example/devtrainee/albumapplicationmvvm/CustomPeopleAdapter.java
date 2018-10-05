@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.devtrainee.albumapplicationmvvm.pojo.People;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,7 +22,8 @@ public class CustomPeopleAdapter extends RecyclerView.Adapter<CustomPeopleAdapte
     Context context;
 
     public CustomPeopleAdapter(List<People> peopleList, Context context) {
-        this.peopleList = Collections.EMPTY_LIST;
+        this.peopleList = peopleList;
+        this.context = context;
     }
 
 
@@ -38,6 +40,7 @@ public class CustomPeopleAdapter extends RecyclerView.Adapter<CustomPeopleAdapte
         itemPeopleViewHolder.tvNamePeople.setText(peopleList.get(i).getName().toString());
         itemPeopleViewHolder.tvEmailPeople.setText(peopleList.get(i).getEmail());
         itemPeopleViewHolder.tvNumberPeople.setText(peopleList.get(i).getPhone());
+
     }
 
     @Override
@@ -47,15 +50,14 @@ public class CustomPeopleAdapter extends RecyclerView.Adapter<CustomPeopleAdapte
 
 
     public static class ItemPeopleViewHolder extends RecyclerView.ViewHolder {
-       TextView tvNamePeople,tvEmailPeople, tvNumberPeople;
+        TextView tvNamePeople, tvEmailPeople, tvNumberPeople;
 
         public ItemPeopleViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvNamePeople= itemView.findViewById(R.id.tv_name_person);
-            tvEmailPeople=itemView.findViewById(R.id.tv_number_person);
-            tvNumberPeople=itemView.findViewById(R.id.tv_email_person);
+            tvNamePeople = itemView.findViewById(R.id.tv_name_person);
+            tvEmailPeople = itemView.findViewById(R.id.tv_number_person);
+            tvNumberPeople = itemView.findViewById(R.id.tv_email_person);
         }
-
 
 
     }
