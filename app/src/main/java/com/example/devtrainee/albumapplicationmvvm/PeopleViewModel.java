@@ -24,7 +24,10 @@ public class PeopleViewModel extends ViewModel {
     }
 
     public void loadPeopleList() {
-        PeopleFactory.getPeopleClient().getPeopleList(PeopleFactory.RANDOM_USER_URL)
+
+        PeopleApplication.getComponent()
+                .getPeopleService()
+                .getPeopleList(PeopleFactory.RANDOM_USER_URL)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(new Consumer<Disposable>() {
@@ -51,7 +54,6 @@ public class PeopleViewModel extends ViewModel {
 
                     @Override
                     public void onComplete() {
-
                     }
                 });
 
